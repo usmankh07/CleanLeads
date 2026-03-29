@@ -1,0 +1,25 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "A potential customer who signed up for the cleaning service.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the lead" },
+        "email": { "type": "string", "format": "email", "description": "Email address of the lead" },
+        "phone": { "type": "string", "description": "Phone number of the lead" },
+        "businessName": { "type": "string", "description": "Name of the cleaning business" },
+        "city": { "type": "string", "description": "City or service area" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the lead signed up" },
+        "status": { "type": "string", "enum": ["new", "contacted", "closed"], "description": "Lead status" }
+      },
+      "required": ["name", "email", "phone", "businessName", "city", "createdAt", "status"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of all leads captured from the landing page."
+    }
+  }
+}
